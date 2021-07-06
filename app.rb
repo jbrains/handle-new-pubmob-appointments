@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'lib/flexbooker'
 
 class HelloWorldApp < Sinatra::Base
     post '/echo' do
@@ -11,24 +12,5 @@ class HelloWorldApp < Sinatra::Base
         else
             400
         end
-    end
-end
-
-class ExtractFlexbookerBookingDetails
-    def initialize(mail_body_plain)
-        @mail_body_plain = mail_body_plain
-    end
-
-    def self.parse(mail)
-        return nil if mail["body-plain"].nil?
-        return self.new(mail["body-plain"])
-    end
-
-    def customer_email
-        "me@jbrains.ca"
-    end
-
-    def customer_full_name
-        "J. B. Rainsberger"
     end
 end
