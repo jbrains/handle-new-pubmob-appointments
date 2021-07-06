@@ -9,10 +9,10 @@ class ExtractFlexbookerBookingDetails
     end
 
     def customer_email
-        "me@jbrains.ca"
+        "::customer email::"
     end
 
     def customer_full_name
-        "J. B. Rainsberger"
+        "::customer full name::"
     end
 end
