@@ -5,9 +5,9 @@ class HelloWorldApp < Sinatra::Base
         mail = params
         booking_details = ExtractFlexbookerBookingDetails.parse(mail)
         if booking_details
-            logger.info "Post a request to https://app.integrately.com/a/webhooks/92ced5fabafd4a30ab9729b6951d3fd2 with the parts"
+            puts "Post a request to https://app.integrately.com/a/webhooks/92ced5fabafd4a30ab9729b6951d3fd2 with the parts"
         else
-            logger.info "Bad request: #{mail.inspect}"
+            puts "Bad request: #{mail.inspect}"
             400
         end
         puts mail.inspect
