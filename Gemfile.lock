@@ -18,11 +18,12 @@ GEM
     tilt (2.0.10)
 
 PLATFORMS
-  ruby
+  aarch64-linux
+  x86_64-linux
 
 DEPENDENCIES
   puma
   sinatra
 
 BUNDLED WITH
-   2.1.4
+   2.2.21
