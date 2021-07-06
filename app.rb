@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'httparty'
 
-require 'lib/flexbooker'
+require './lib/flexbooker'
 
 class HelloWorldApp < Sinatra::Base
     post '/echo' do
