@@ -3,15 +3,19 @@ require 'httparty'
 
 require './lib/flexbooker'
 
+BookingDetailsDestinationEndpointUrl = ENV["DESTINATION_ENDPOINT_URL"]
+
 class HandleNewEvolutionaryDesignWithoutTestsBookingApp < Sinatra::Base
     post '/echo' do
+        return [500, {}, ["I can't find the booking details destination endpoint URL."]] unless BookingDetailsDestinationEndpointUrl
+
         mail = params
         puts mail.inspect
         booking_details = ExtractFlexbookerBookingDetails.parse(mail).parse()
         if booking_details
-            puts "Post a request to https://app.integrately.com/a/webhooks/e80a5f7584924e4a99d05d0b31dfd632 with the parts #{booking_details.inspect}"
+            puts "Received a booking email with the parts #{booking_details.inspect}"
             # REFACTOR Extract to an environment variable
-            HTTParty.post("https://app.integrately.com/a/webhooks/e80a5f7584924e4a99d05d0b31dfd632", {body: {customer_email: booking_details.customer_email, customer_full_name: booking_details.customer_full_name}})
+            HTTParty.post(BookingDetailsDestinationEndpointUrl, {body: {customer_email: booking_details.customer_email, customer_full_name: booking_details.customer_full_name}})
             200
         else
             [400, {}, ["This doesn't look like a Flexbooker email.", mail.inspect]]
