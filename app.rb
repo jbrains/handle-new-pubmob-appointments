@@ -7,7 +7,7 @@ class HelloWorldApp < Sinatra::Base
     post '/echo' do
         mail = params
         puts mail.inspect
-        booking_details = ExtractFlexbookerBookingDetails.parse(mail)
+        booking_details = ExtractFlexbookerBookingDetails.parse(mail).parse()
         if booking_details
             puts "Post a request to https://app.integrately.com/a/webhooks/e80a5f7584924e4a99d05d0b31dfd632 with the parts #{booking_details.inspect}"
             # REFACTOR Extract to an environment variable

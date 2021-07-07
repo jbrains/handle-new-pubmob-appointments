@@ -1,3 +1,5 @@
+# CONTRACT The customer email must be a valid email, otherwise editing
+# the Integrately integration task fails.
 EvolutionaryDesignWithTestsBooking = Struct.new(:customer_email, :customer_full_name) do
   def self.parse_flexbooker_email_body_plain(email_body_plain)
     lines = email_body_plain.split("\r\n")
@@ -13,8 +15,6 @@ EvolutionaryDesignWithTestsBooking = Struct.new(:customer_email, :customer_full_
   end
 end
 
-# CONTRACT The customer email must be a valid email, otherwise editing
-# the Integrately integration task fails.
 class ExtractFlexbookerBookingDetails
     def initialize(mail_body_plain)
         @mail_body_plain = mail_body_plain
@@ -25,12 +25,7 @@ class ExtractFlexbookerBookingDetails
         return self.new(mail["body-plain"])
     end
 
-    def customer_email
-        # CONTRACT Even for testing, this needs to be a valid email address.
-        "me+check.integrately@jbrains.ca"
-    end
-
-    def customer_full_name
-        "::customer full name::"
+    def parse()
+        EvolutionaryDesignWithTestsBooking.parse_flexbooker_email_body_plain(@mail_body_plain)
     end
 end
