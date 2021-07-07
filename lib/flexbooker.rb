@@ -9,7 +9,8 @@ class ExtractFlexbookerBookingDetails
     end
 
     def customer_email
-        "::customer email::"
+        # CONTRACT Even for testing, this needs to be a valid email address.
+        "me+check.integrately@jbrains.ca"
     end
 
     def customer_full_name
