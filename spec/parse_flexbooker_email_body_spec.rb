@@ -2,21 +2,6 @@ require 'lib/flexbooker.rb'
 
 # BEGIN Production code
 
-EvolutionaryDesignWithTestsBooking = Struct.new(:customer_email, :customer_full_name) do
-  def self.parse_flexbooker_email_body_plain(email_body_plain)
-    lines = email_body_plain.split("\r\n")
-
-    customer_email_lines = lines.map { | line | /Customer Email\: (.+)/.match(line) || [] }.map { | match_data | match_data[1] }.reject { | result | result.nil? }
-    customer_full_name_lines = lines.map { | line | /Customer Name\: (.+)/.match(line) || [] }.map { | match_data | match_data[1] }.reject { | result | result.nil? }
-
-    if customer_email_lines.size < 1 || customer_full_name_lines.size < 1
-      nil
-    else
-      EvolutionaryDesignWithTestsBooking.new(customer_email_lines.first, customer_full_name_lines.first)
-    end
-  end
-end
-
 # END Production code
 
 describe "Reminding myself how to match Regexp" do
