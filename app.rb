@@ -14,7 +14,7 @@ class HelloWorldApp < Sinatra::Base
             HTTParty.post("https://app.integrately.com/a/webhooks/e80a5f7584924e4a99d05d0b31dfd632", {body: {customer_email: booking_details.customer_email, customer_full_name: booking_details.customer_full_name}})
             200
         else
-            [400, {}, ["That doesn't look like a Flexbooker email."]]
+            [400, {}, ["This doesn't look like a Flexbooker email.", mail.inspect]]
         end
     end
 end
