@@ -1,3 +1,2 @@
 require "./app"
-run HelloWorldApp
-
+run HandleNewEvolutionaryDesignWithoutTestsBookingApp

@@ -3,7 +3,7 @@ require 'httparty'
 
 require './lib/flexbooker'
 
-class HelloWorldApp < Sinatra::Base
+class HandleNewEvolutionaryDesignWithoutTestsBookingApp < Sinatra::Base
     post '/echo' do
         mail = params
         puts mail.inspect
