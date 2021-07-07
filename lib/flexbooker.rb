@@ -1,3 +1,5 @@
+# CONTRACT The customer email must be a valid email, otherwise editing
+# the Integrately integration task fails.
 class ExtractFlexbookerBookingDetails
     def initialize(mail_body_plain)
         @mail_body_plain = mail_body_plain
