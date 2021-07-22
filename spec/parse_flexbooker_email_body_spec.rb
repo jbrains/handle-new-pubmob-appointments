@@ -12,4 +12,10 @@ describe "Parsing the Flexbooker booking notification email body" do
         expect(booking.customer_email).to eq("ttx013@gmail.com")
         expect(booking.customer_full_name).to eq("Marat Chukmarov")
     end
+
+    example "empty body" do
+        booking = EvolutionaryDesignWithTestsBooking.parse_flexbooker_email_body_plain("")
+
+        expect(booking).to eq(nil)
+    end
 end
