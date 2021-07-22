@@ -6,7 +6,7 @@ require './lib/flexbooker'
 BookingDetailsDestinationEndpointUrl = ENV["DESTINATION_ENDPOINT_URL"]
 
 class HandleNewEvolutionaryDesignWithoutTestsBookingApp < Sinatra::Base
-    post '/echo' do
+    post '/booking/email-notification' do
         return [500, {}, ["I can't find the booking details destination endpoint URL."]] unless BookingDetailsDestinationEndpointUrl
 
         mail = params
